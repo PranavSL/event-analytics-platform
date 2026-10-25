@@ -1,0 +1,23 @@
+spring:
+    main:
+        keep-alive: true
+    application:
+        name: consumer
+    datasource:
+        url: jdbc:postgresql://localhost:5432/analytics
+        username: postgres
+        password: root
+    flyway:
+        baseline-on-migrate: true
+    kafka:
+        bootstrap-servers: localhost:9092
+        consumer:
+            group-id: analytics-writer
+            auto-offset-reset: earliest
+            enable-auto-commit: false
+            max-poll-records: 500
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+app:
+    topic: wikimedia.recentchange
