@@ -1,0 +1,21 @@
+spring:
+  main:
+    keep-alive: true
+  application:
+    name: producer
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      compression-type: lz4
+      properties:
+        enable.idempotence: true
+        linger.ms: 20
+        batch.size: 32768
+
+app:
+  topic: wikimedia.recentchange
+  stream-url: https://stream.wikimedia.org/v2/stream/recentchange
+  user-agent: event-analytics-learning/0.1 (pranavlohote20@gmail.com)
