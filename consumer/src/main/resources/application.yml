@@ -7,6 +7,8 @@ spring:
         url: jdbc:postgresql://localhost:5432/analytics
         username: postgres
         password: root
+        hikari:
+            connection-timeout: 2000
     flyway:
         baseline-on-migrate: true
     kafka:
@@ -21,3 +23,4 @@ spring:
 
 app:
     topic: wikimedia.recentchange
+    dlt-topic: wikimedia.recentchange.dlt
