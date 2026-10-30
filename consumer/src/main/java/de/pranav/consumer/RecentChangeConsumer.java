@@ -24,7 +24,7 @@ public class RecentChangeConsumer {
     }
 
     @KafkaListener(topics = "${app.topic}")
-    public void onMessage(ConsumerRecord<String, String> record) throws Exception {
+    public void onMessage(ConsumerRecord<String, String> record){
         WikiEvent event = parser.parse(record.value());
         int rows = repository.insertIgnoreDuplicate(event, record.partition(), record.offset());
 
