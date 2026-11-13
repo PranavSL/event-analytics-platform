@@ -1,3 +1,4 @@
+![CI](https://github.com/PranavSL/event-analytics-platform/actions/workflows/ci.yml/badge.svg)
 # Real-Time Event Analytics Platform
 
 Streams live Wikimedia edit events through Kafka into PostgreSQL, with aggregation and analytics on top.
