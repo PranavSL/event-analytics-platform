@@ -87,7 +87,7 @@ public class WikimediaStreamReader {
         }
     }
 
-    private void handleLine(String line) {
+    void handleLine(String line) {
         if (!line.startsWith("data: ")) {
             return;                                  // skip event:, id:, comments, blank lines
         }
