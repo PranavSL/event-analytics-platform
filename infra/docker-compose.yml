@@ -40,5 +40,27 @@ services:
     depends_on:
       - kafka
 
+  spark-job:
+    build: ../spark-jobs
+    container_name: spark-job
+    depends_on:
+      - kafka
+      - postgres
+    environment:
+      TZ: UTC
+      KAFKA_BOOTSTRAP: kafka:19092
+      KAFKA_TOPIC: wikimedia.recentchange
+      START_OFFSETS: latest
+      PG_HOST: postgres
+      PG_DB: analytics
+      PG_USER: analytics
+      PG_PASSWORD: analytics
+      CHECKPOINT_DIR: /checkpoints/wiki_stats_1m
+    volumes:
+      - spark-checkpoints:/checkpoints
+      - spark-ivy:/ivy
+
 volumes:
   pgdata:
+  spark-checkpoints:
+  spark-ivy:
